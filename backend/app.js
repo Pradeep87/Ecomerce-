@@ -1,4 +1,4 @@
-const dotenv=require('dotenv');
+
 const express=require('express');
 const app=express();
 const cookieParser=require('cookie-parser');
@@ -9,7 +9,15 @@ const path=require('path')
 const errorMiddelware=require('./middelware/error');
 
 
-dotenv.config();
+if(process.env.NODE_ENV !== "PRODUCTION"){
+  require('dotenv').dotenv.config();
+
+}
+
+
+
+
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyparser.urlencoded({ extended: true }));
